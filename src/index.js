@@ -3,9 +3,8 @@ const React = require("react");
 const ReactDOM = require("react-dom");
 
 class App extends React.Component {
-
-    //First function called when new object is created 
-    constructor(props){
+    //First function called when new object is created
+    constructor(props) {
         super(props);
         this.state = {
             lat: null,
@@ -14,15 +13,14 @@ class App extends React.Component {
             (position) => {
                 console.log(position);
                 this.setState({
-                    lat: position.coords.latitude
-                })
+                    lat: position.coords.latitude,
+                });
             },
             (error) => {
                 console.log(error);
             }
         );
     }
-
 
     //Must have render method
     render() {
