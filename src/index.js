@@ -1,23 +1,18 @@
 //React and ReactDOM
-const React = require('react');
-const ReactDOM = require('react-dom');
+const React = require("react");
+const ReactDOM = require("react-dom");
+const Comment = require('./Comment');
 
 //React Component
 const App = () => {
-
-    const buttonText = 'You Should'
-
     return (
-        <div className="">
-            <button style={{backgroundColor: 'red', }}>
-                {buttonText}
-            </button>
+        <div className="ui container comments">
+            <Comment name="Sam"/>
+            <Comment name="Jack"/>
+            <Comment name="Jane"/>
         </div>
-    ) 
-}
+    );
+};
 
 //Show react component on screen
-ReactDOM.render(
-    <App />,
-    document.querySelector('#root')
-);
+ReactDOM.render(<App />, document.querySelector("#root"));
