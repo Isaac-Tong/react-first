@@ -2,26 +2,29 @@
 const React = require("react");
 const ReactDOM = require("react-dom");
 
-
-//React Component
-// const App = () => {
-//     navigator.geolocation.getCurrentPosition(
-//         (position) => {
-//             console.log(position);
-//         },
-//         (error) => {
-//             console.log(error);
-//         }
-//     );
-//     return (
-//         <div>
-//             Hello
-//         </div>
-//     );
-// };
 class App extends React.Component {
+
+    //First function called when new object is created 
+    constructor(props){
+        super(props);
+        this.state = {
+            lat: null,
+        };
+    }
+
+
+    //Must have render method
     render() {
-        return <div>Lattitude</div>
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                console.log(position);
+                
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+        return <div>Lattitude: {this.state.lat} </div>;
     }
 }
 
