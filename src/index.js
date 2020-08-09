@@ -10,20 +10,22 @@ class App extends React.Component {
         this.state = {
             lat: null,
         };
-    }
-
-
-    //Must have render method
-    render() {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 console.log(position);
-                
+                this.setState({
+                    lat: position.coords.latitude
+                })
             },
             (error) => {
                 console.log(error);
             }
         );
+    }
+
+
+    //Must have render method
+    render() {
         return <div>Lattitude: {this.state.lat} </div>;
     }
 }
