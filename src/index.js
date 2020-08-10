@@ -2,6 +2,7 @@
 const React = require("react");
 const ReactDOM = require("react-dom");
 const Seasons = require('./Seasons');
+const Spinner = require('./Spinner');
 
 class App extends React.Component {
     // //First function called when new object is created
@@ -58,8 +59,8 @@ class App extends React.Component {
             return <Seasons lat={this.state.lat}></Seasons>
 
         } else if (!this.state.errorMessage && !this.state.lat) {
-            
-            return <p>Loading...</p>;
+
+            return <Spinner></Spinner>
         }
     }
 }
