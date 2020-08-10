@@ -1,15 +1,26 @@
 //React and ReactDOM
 const React = require("react");
 const ReactDOM = require("react-dom");
+const Seasons = require('./Seasons');
 
 class App extends React.Component {
-    //First function called when new object is created
-    constructor(props) {
-        super(props);
-        this.state = {
-            lat: null,
-            errorMessage: null,
-        };
+    // //First function called when new object is created
+    // constructor(props) {
+    //     super(props);
+        
+    //     //First way to initialize state
+    //     this.state = {
+    //         lat: null,
+    //         errorMessage: null,
+    //     };
+    // }
+
+    //Alternate way to initialize state
+    state = {lat: null, errorMessage: ''};
+
+    //Called when component has loaded onto screen
+    //Good place to load data
+    componentDidMount(){
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 console.log(position);
@@ -25,16 +36,30 @@ class App extends React.Component {
         );
     }
 
+    //Called when state changes
+    //Good place to data-load when state change
+    componentDidUpdate() {
+        console.log('rerendered');
+    }
+
+    // Called before disposing component
+    componentWillUnmount() {
+
+    }
+
     //Must have render method
     render() {
         if (this.state.errorMessage && !this.state.lat) {
+
             return <p>Error: {this.state.errorMessage}</p>;
-        }
-        else if(!this.state.errorMessage && this.state.lat){
-        return <p>Lattitude: {this.state.lat}</p>
-        }
-        else if(!this.state.errorMessage && !this.state.lat){
-            return <p>Loading...</p>
+
+        } else if (!this.state.errorMessage && this.state.lat) {
+
+            return <Seasons lat={this.state.lat}></Seasons>
+
+        } else if (!this.state.errorMessage && !this.state.lat) {
+            
+            return <p>Loading...</p>;
         }
     }
 }

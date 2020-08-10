@@ -1,8 +1,9 @@
 const React = require('react');
 
-const Seasons = () => {
+const Seasons = (props) => {
+    console.log(props);
     return (
-        <div>Hello World</div>
+    <div>Lattitude: {props.lat}</div>
     )
 }
 
